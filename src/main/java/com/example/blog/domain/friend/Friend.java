@@ -43,6 +43,9 @@ public class Friend {
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
 
+    @ElementCollection
+    private List<String> addressList;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     private SiteUser author;
