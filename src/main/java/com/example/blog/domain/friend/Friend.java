@@ -42,7 +42,11 @@ public class Friend {
     private  String restaurantName; //식당이름
     private String cuisineType;
 
+    @Setter
+    @Getter
     private LocalDate meetingDate;
+    @Setter
+    @Getter
     private LocalTime meetingTime;
 
 

@@ -19,9 +19,12 @@
             <span th:text="${friend.cuisineType}"></span>
         </div>
         <div>
-            <p>만날 날짜: <span th:text="${friend.meetingDate}"></span></p>
-            <p>만날 시간: <span th:text="${friend.meetingTime}"></span></p>
+            날짜: <span th:text="${#temporals.format(friend.meetingDate, 'yyyy-MM-dd')}"></span>
         </div>
+        <div>
+            시간: <span th:text="${#temporals.format(friend.meetingTime, 'HH:mm')}"></span>
+        </div>
+
         <div>
             <label class="font-weight-bold">주소:</label>
             <span id="address-${friend.id}" th:text="${friend.address}"></span>
@@ -56,13 +59,13 @@
                     <a th:href="@{|/friend/modify/${friend.id}|}" class="btn btn-sm btn-outline-secondary"
                        sec:authorize="isAuthenticated()"
                        th:if="${friend.author != null and #authentication.getPrincipal().getUsername() == friend.author.username}"
-                       th:text="수정"></a>
+                       th:text="수정">수정</a>
 
                     <a onclick="return confirm('정말로 삭제하시겠습니까?');" th:href="@{|/friend/delete/${friend.id}|}"
                        class="delete btn btn-sm btn-outline-secondary"
                        sec:authorize="isAuthenticated()"
                        th:if="${friend.author != null and #authentication.getPrincipal().getUsername() == friend.author.username}"
-                       th:text="삭제"></a>
+                       th:text="삭제">삭제</a>
                 </div>
             </div>
         </div>
