@@ -21,16 +21,15 @@
 
     <div class="row">
         <div th:each="friend, loop : ${paging}" class="col-md-4 mb-3">
-            <div class="card">
+            <div class="card" th:id="'card-' + ${friend.id}" th:onclick="'showMap(\'' + ${friend.address} + '\', 'map-' + ${friend.id})'">
                 <h2 th:text="${friend.title}"></h2>
-                <!--    <p>작성자: <a th:href="@{/profile/{username}(username=${friend.author.username})}" th:text="${friend.author.username}"></a></p>-->
                 <p>날짜: <span th:text="${#temporals.format(friend.createDate, 'yyyy-MM-dd')}"></span></p>
                 <h6 class="card-subtitle mb-2 text-muted">
                     <a th:href="@{|/friend/detail/${friend.id}|}" th:text="${friend.address}" class="no-underline"></a>
                 </h6>
                 <p>음식종류: <span th:text="${friend.cuisineType}"></span></p>
                 <!-- 지도 컨테이너 추가 -->
-                <div id="map-${friend.id}" style="width:100%;height:300px;margin-top:20px;"></div>
+                <div th:id="'map' + ${friend.id}" class="map-container" style="width:100%;height:200px;"></div>
             </div>
         </div>
     </div>
@@ -71,5 +70,7 @@
         <a th:href="@{/friend/create}" class="btn btn-primary">질문 등록하기</a>
     </div>
 </div>
+
+<script src="/js/searchAddress.js"></script>
 </body>
 </html>

@@ -116,3 +116,32 @@ html > body {
     cursor: not-allowed;
     opacity: 0.5;
 }
+
+.map-container {
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+}
+
+/* friend_list*/
+.card {
+    cursor: pointer; /* 포인터 모양으로 변경하여 클릭 가능하게 함 */
+    transition: transform 0.2s; /* 호버 시 애니메이션 효과 추가 */
+}
+
+.card:hover {
+    transform: scale(1.05); /* 호버 시 크기를 조금 키움 */
+}
+
+.map-container {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+}
+
+.address-item {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin: 5px 0;
+}
