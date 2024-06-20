@@ -136,8 +136,9 @@ html > body {
 .map-container {
     width: 100%;
     height: 200px;
-    margin-top: 20px;
+    margin: 10px 0;
 }
+
 
 .address-item {
     cursor: pointer;

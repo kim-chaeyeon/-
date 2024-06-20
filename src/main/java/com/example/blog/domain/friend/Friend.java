@@ -40,6 +40,7 @@ public class Friend {
     private  String restaurantName; //식당이름
     private String cuisineType;
 
+
     private LocalDateTime createDate;
     private LocalDateTime modifyDate;
 
