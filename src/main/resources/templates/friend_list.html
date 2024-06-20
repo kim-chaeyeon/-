@@ -23,7 +23,8 @@
         <div th:each="friend, loop : ${paging}" class="col-md-4 mb-3">
             <div class="card" th:id="'address' + ${friend.id}">
                 <h2 th:text="${friend.title}"></h2>
-                <p>날짜: <span th:text="${#temporals.format(friend.createDate, 'yyyy-MM-dd')}"></span></p>
+                <p> 날짜: <span th:text="${friend.meetingDate}"></span></p>
+                <p> 시간: <span th:text="${friend.meetingTime}"></span></p>
                 <h6 class="card-subtitle mb-2 text-muted">
                     <a th:href="@{|/friend/detail/${friend.id}|}" th:text="${friend.address}" class="no-underline"></a>
                 </h6>
@@ -71,6 +72,6 @@
     </div>
 </div>
 
-<script src="/js/searchAddressList.js"></script>
+<script src="/js/friendsearchAddressList.js"></script>
 </body>
 </html>

@@ -13,6 +13,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +34,7 @@ public class FriendService {
         return of.get();
     }
 
-    public Friend create(String title, String content, int capacity, String cuisineType, String address, String restaurantName, SiteUser siteUser) {
+    public Friend create(String title, String content, int capacity, String cuisineType, String address, String restaurantName, LocalDate meetingDate, LocalTime meetingTime, SiteUser siteUser) {
         Friend friend = Friend.builder()
                 .title(title)
                 .content(content)
@@ -40,6 +42,8 @@ public class FriendService {
                 .cuisineType(cuisineType)
                 .address(address)
                 .restaurantName(restaurantName)
+                .meetingDate(meetingDate)
+                .meetingTime(meetingTime)
                 .build();
         friendRepository.save(friend);
 
@@ -59,13 +63,15 @@ public class FriendService {
         return friendRepository.findAll(spec, pageable);
     }
 
-    public void modify(Friend friend, String title, String content, int capacity, String cuisineType, String address, String restaurantName) {
+    public void modify(Friend friend, String title, String content, int capacity, String cuisineType, String address, String restaurantName, LocalDate meetingDate, LocalTime meetingTime) {
         friend.setTitle(title);
         friend.setContent(content);
         friend.setCapacity(capacity);
         friend.setCuisineType(cuisineType);
         friend.setAddress(address);
         friend.setRestaurantName(restaurantName);
+        friend.setMeetingDate(meetingDate);
+        friend.setMeetingTime(meetingTime);
         friendRepository.save(friend);
     }
 

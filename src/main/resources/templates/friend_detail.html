@@ -19,12 +19,16 @@
             <span th:text="${friend.cuisineType}"></span>
         </div>
         <div>
+            <p>만날 날짜: <span th:text="${friend.meetingDate}"></span></p>
+            <p>만날 시간: <span th:text="${friend.meetingTime}"></span></p>
+        </div>
+        <div>
             <label class="font-weight-bold">주소:</label>
             <span id="address-${friend.id}" th:text="${friend.address}"></span>
         </div>
         <p>현재 인원수: <span id="current-participants" th:text="${friend.currentParticipants}"></span></p>
         <div id="map-${friend.id}" class="map-container" style="width:100%;height:200px;"></div>
-        <script src="/js/searchAddressdetail.js"></script>
+        <script src="/js/friendsearchAddressdetail.js"></script>
 
         <button class="btn btn-primary increment-btn" th:data-id="${friend.id}">같이먹기</button>
         <script src="/js/currentParticipants.js"></script>

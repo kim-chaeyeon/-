@@ -7,7 +7,9 @@ import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -39,6 +41,9 @@ public class Friend {
     private String address; //주소
     private  String restaurantName; //식당이름
     private String cuisineType;
+
+    private LocalDate meetingDate;
+    private LocalTime meetingTime;
 
 
     private LocalDateTime createDate;

@@ -1,5 +1,7 @@
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container my-3">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2e886fa0387a4683a275ed630512bc1f&libraries=services"></script>
 
     <!-- 맛집 게시물 -->
     <h2 class="border-bottom py-2" th:text="${restaurant.title}"></h2>

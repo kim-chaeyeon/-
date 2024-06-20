@@ -16,6 +16,8 @@ import jakarta.validation.Valid;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @RequiredArgsConstructor
 @RequestMapping("/friend")
@@ -58,13 +60,15 @@ public class FriendController {
             @RequestParam("cuisineType") String cuisineType,
             @RequestParam("address") String address,
             @RequestParam("restaurantName") String restaurantName,
+            @RequestParam("meetingDate") LocalDate meetingDate,
+            @RequestParam("meetingTime") LocalTime meetingTime,
             Principal principal) {
         if (title.isEmpty() || content.isEmpty() || cuisineType.isEmpty() || address.isEmpty() || restaurantName.isEmpty()) {
             return "friend_form";
         }
 
         SiteUser siteUser = this.userService.getUser(principal.getName());
-        Friend f = this.friendService.create(title,content,capacity,cuisineType,address, restaurantName,siteUser);
+        Friend f = this.friendService.create(title,content,capacity,cuisineType,address, restaurantName, meetingDate, meetingTime, siteUser);
 
         return "redirect:/friend/list";
     }
@@ -82,7 +86,7 @@ public class FriendController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "수정권한이 없습니다.");
         }
 
-        friendService.modify(friend,friendForm.getTitle(), friendForm.getContent(), friendForm.getCapacity(), friendForm.getCuisineType(), friendForm.getAddress(), friendForm.getRestaurantName());
+        friendService.modify(friend,friendForm.getTitle(), friendForm.getContent(), friendForm.getCapacity(), friendForm.getCuisineType(), friendForm.getAddress(), friendForm.getRestaurantName(), friendForm.getMeetingDate(), friendForm.getMeetingTime());
 
         return "redirect:/friend/detail/%s".formatted(id);
     }
@@ -102,6 +106,8 @@ public class FriendController {
         friendForm.setCuisineType(friend.getCuisineType());
         friendForm.setAddress(friend.getAddress());
         friendForm.setRestaurantName(friend.getRestaurantName());
+        friendForm.setMeetingDate(friend.getMeetingDate());
+        friendForm.setMeetingTime(friend.getMeetingTime());
         return "friend_form";
     }
 
